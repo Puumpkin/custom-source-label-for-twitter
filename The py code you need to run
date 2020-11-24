@@ -1,0 +1,48 @@
+#Puumpkins Tweet Thing 
+
+#To get your auth tokens go to https://developer.twitter.com/ and create an app and name it to whatever you want your source label to be and put the required tokens into the code
+#For the replys you have to @ the person you want to reply to for example (@PumpkinBlend I love this tweet!) and then the id is the random numbers in the url in the tweet you want to reply to.
+#for the image write the file dirictory if you running it on python your pc for repl.it upload the image write the name of the file (example.png)
+#if you have any questions feel free to ask!
+
+import tweepy
+print("Welcome to my Tweet thing\nWhat do you want to do?\n1)Make a Tweet\n2)Reply to a tweet\n3)Tweet an Image\n4)Reply with image\n")
+user=input("")
+if user=="1":
+  auth = tweepy.OAuthHandler("your consumer key", "your secret consumer key")
+  auth.set_access_token("your auth token", "your secret auth token")
+  api = tweepy.API(auth)
+  print("What do you want to say?\n")
+  tweet=input("")
+  api.update_status(status=(tweet))
+  print("Tweet was Sent")
+elif user=="2":
+  auth = tweepy.OAuthHandler("your consumer key", "your secret consumer key")
+  auth.set_access_token("your auth token", "your secret auth token")
+  api = tweepy.API(auth)
+  print("What do you want to say?\n")
+  tweet=input("")
+  print("What is the id?\n")
+  ids=input("")
+  api.update_status(tweet,in_reply_to_status_id = ids)
+  print("Tweet was Sent")
+elif user=="3":
+  auth = tweepy.OAuthHandler(os.getenv("token1"), os.getenv("token2"))
+  auth.set_access_token("your auth token", "your secret auth token")
+  api = tweepy.API(auth)
+  print("What do you want to say?\n")
+  tweet=input("")
+  image="image.png" 
+  api.update_with_media(image, tweet)
+  print("Tweet was Sent")
+elif user=="4":
+  auth = tweepy.OAuthHandler(os.getenv("token1"), os.getenv("token2"))
+  auth.set_access_token("your auth token3", "your secret auth token")
+  api = tweepy.API(auth)
+  print("What do you want to say?\n")
+  tweet=input("")
+  print("What is the id?\n")
+  ids=input("")
+  image="image.png" 
+  api.update_with_media(image,tweet,in_reply_to_status_id = ids)
+  print("Tweet was Sent")
